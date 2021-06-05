@@ -11,7 +11,6 @@ import es.jbp.comun.utiles.sql.EjecutorSentenciaGuardado;
 import es.jbp.comun.utiles.sql.EjecutorSentenciaSelect;
 import es.jbp.comun.utiles.sql.GestorConexiones;
 import es.jbp.comun.utiles.sql.PaginaEntidades;
-import es.jbp.comun.utiles.sql.Secuencia;
 import es.jbp.comun.utiles.sql.SecuenciaMaximoMasUno;
 import es.jbp.comun.utiles.sql.compatibilidad.FormateadorSql;
 import es.jbp.comun.utiles.sql.sentencia.SentenciaSql;
@@ -90,22 +89,6 @@ public class AccesoEntidadesGes extends Dao {
             return false;
         }
         asignarValoresRecuperados(entidad, ejecutor.getValoresRecuperados());
-        
-//        // Se recupera la nueva clave primaria
-//        ClavePrimaria clavePrimariaNueva = new ClavePrimaria();
-//        for (CampoGes campo : campos) {
-//            if (campo.perteneceATabla(tabla) && campo.isClave()) {
-//                String idCampo = campo.getIdCampo();
-//                Object valor = entidad.getValor(idCampo);
-//                if (valor instanceof Secuencia) {
-//                    valor = ((Secuencia) valor).getValorGenerado();
-//                    entidad.setValor(idCampo, valor);
-//                }
-//                clavePrimariaNueva.set(idCampo, valor);
-//            }
-//        }
-//        entidad.setClavePrimaria(clavePrimariaNueva);
-
         return true;        
     }
 
@@ -126,10 +109,6 @@ public class AccesoEntidadesGes extends Dao {
             if (!campo.perteneceATabla(tabla)) {
                 continue;
             }
-//            // Si la entidad no contiene valor para el campo, no se modifica
-//            if (!entidad.contiene(campo.getIdCampo())) {
-//                continue;
-//            }
             String idCampo = campo.getIdCampo();
             String nombreSqlCampo = campo.getNombreCompleto();
             ClavePrimaria clavePrimaria = entidad.getClavePrimaria();
