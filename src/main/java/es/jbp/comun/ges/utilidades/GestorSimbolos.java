@@ -1,19 +1,20 @@
 package es.jbp.comun.ges.utilidades;
 
 import es.jbp.comun.utiles.conversion.Conversion;
-import es.jbp.comun.utiles.sql.PlantillaSql;
+import es.jbp.comun.utiles.sql.Plantilla;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * La clase que gestion los simbolos que pueden ser sustituidos en las cadenas
+ * La clase que gestiona los símbolos que pueden ser sustituidos en las cadenas
  * (sentencias sql, formatos, ...) del archivo ges.
  * @author Jorge Berjano
  */
 public class GestorSimbolos {
     
     private Map<String, Object> mapaSimbolos;
-    
+
     public GestorSimbolos() {
         this.mapaSimbolos = new HashMap();
     }
@@ -56,9 +57,9 @@ public class GestorSimbolos {
         if (Conversion.isBlank(strTexto)) {
             return strTexto;
         }
-        PlantillaSql plantilla = new PlantillaSql(strTexto, null);
+        Plantilla plantilla = new Plantilla(strTexto, null);
         plantilla.setSoloSimbolos(soloSimbolos);
-        mapaSimbolos.keySet().stream().forEach((k) -> plantilla.definirParametro(k, mapaSimbolos.get(k)));
+        mapaSimbolos.keySet().stream().forEach((k) -> plantilla.definirSimbolo(k, mapaSimbolos.get(k)));
         
         String resultado = plantilla.getResultado();
         return resultado;

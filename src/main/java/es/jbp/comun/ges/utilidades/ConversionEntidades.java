@@ -1,7 +1,7 @@
 package es.jbp.comun.ges.utilidades;
 
-import es.jbp.comun.ges.dao.EntidadGes;
-import es.jbp.comun.ges.dao.MapaValores;
+import es.jbp.comun.ges.entidad.EntidadGes;
+import es.jbp.comun.ges.entidad.MapaValores;
 import es.jbp.comun.utiles.reflexion.Reflexion;
 import java.util.Map;
 

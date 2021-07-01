@@ -1,6 +1,9 @@
 package es.jbp.comun.ges.entidad;
 
 import es.jbp.comun.ges.utilidades.GestorSimbolos;
+import es.jbp.comun.utiles.sql.compatibilidad.CompatibilidadSql;
+import es.jbp.comun.utiles.sql.compatibilidad.FormateadorSql;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +24,7 @@ public class Ges {
     private int estilo;
     private List<ConsultaGes> consultasPantalla = new ArrayList();
     private List<ConsultaGes> consultasImpresora = new ArrayList();
-    
+
     private GestorSimbolos gestorSimbolos = new GestorSimbolos();
 
     public int getVersion() {
