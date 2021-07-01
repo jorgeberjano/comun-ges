@@ -2,8 +2,6 @@ package es.jbp.comun.ges.entidad;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import es.jbp.comun.ges.dao.ClavePrimaria;
-import es.jbp.comun.ges.dao.EntidadGes;
 import static es.jbp.comun.ges.entidad.CampoGes.CAMPO_CLAVE;
 import es.jbp.comun.ges.utilidades.ConversionValores;
 import es.jbp.comun.utiles.conversion.Conversion;
@@ -502,7 +500,7 @@ public class ConsultaGes implements Serializable, Cloneable {
         int i = 0;
         for (CampoGes campoClave : camposClave) {
             Object valor = ConversionValores.aValorBD(valores[i++], campoClave);
-            clave.set(campoClave.getIdCampo(), valor);
+            clave.put(campoClave.getIdCampo(), valor);
         }
         return clave;
     }
