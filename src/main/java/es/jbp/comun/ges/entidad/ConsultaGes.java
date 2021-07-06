@@ -418,27 +418,6 @@ public class ConsultaGes implements Serializable, Cloneable {
 //        }
 //    }
 
-    /**
-     * Convierte un mapa de valores de texto a un mapa de valores objeto convertidos
-     * segun la configuración de cada campo.
-     * @param mapaOriginal
-     * @return
-     */
-    public Map<String, Object> convertirValores(Map<String, String> mapaOriginal) {
-        Map<String, Object> mapaValores = new HashMap<>();
-        for (String idCampo : mapaOriginal.keySet()) {
-            String valorTexto = mapaOriginal.get(idCampo);
-            CampoGes campo = getCampoPorId(idCampo);
-            if (campo == null) {
-                continue;
-            }
-            //Object valor = campo.convertirValor(valorTexto);
-            Object valor = ConversionValores.aValorBD(valorTexto, campo);
-            mapaValores.put(idCampo, valor);
-        }
-        return mapaValores;
-    }
-
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();

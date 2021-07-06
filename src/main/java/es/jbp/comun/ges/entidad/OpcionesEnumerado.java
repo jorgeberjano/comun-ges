@@ -1,6 +1,8 @@
 package es.jbp.comun.ges.entidad;
 
 import es.jbp.comun.utiles.conversion.Conversion;
+import es.jbp.comun.utiles.sql.compatibilidad.CompatibilidadSql;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +16,16 @@ public class OpcionesEnumerado {
     
     public void agregar(String opcion, Object valor) {
         listaItems.add(new ItemEnumerado(opcion, valor));
+    }
+
+    public void agregarEnumeradosBooleanos(List<String> lista) {
+
+        if (lista.size() > 0) {
+            listaItems.add(new ItemEnumerado(lista.get(0), false));
+        }
+        if (lista.size() > 1) {
+            listaItems.add(new ItemEnumerado(lista.get(1), true));
+        }
     }
 
     public void agregarEnumeradosEnteros(List<String> lista) {
@@ -46,6 +58,7 @@ public class OpcionesEnumerado {
         if (valor == null) {
             return null;
         }
+
         for (ItemEnumerado item : listaItems) {
             if (valor.equals(item.getValor())) {
                 return item.getTexto();

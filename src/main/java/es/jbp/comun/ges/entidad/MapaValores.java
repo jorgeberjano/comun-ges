@@ -14,6 +14,10 @@ public class MapaValores extends LinkedHashMap<String, Object> {
     public MapaValores() {
     }
 
+    public MapaValores(MapaValores mapaValores) {
+        this.putAll(mapaValores);
+    }
+
     public MapaValores(Map<String, Object> mapaValores) {
         this.putAll(mapaValores);
     }

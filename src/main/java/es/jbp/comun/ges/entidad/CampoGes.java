@@ -399,7 +399,11 @@ public class CampoGes implements Campo, Serializable, Cloneable {
             String cadenaOpciones;
             cadenaOpciones = formato.substring(1);
             String[] arrayOpciones = cadenaOpciones.split("#");
-            opcionesEnumerado.agregarEnumeradosEnteros(Arrays.asList(arrayOpciones));
+            if (tipoDato == TipoDato.BOOLEANO) {
+                opcionesEnumerado.agregarEnumeradosBooleanos(Arrays.asList(arrayOpciones));
+            } else {
+                opcionesEnumerado.agregarEnumeradosEnteros(Arrays.asList(arrayOpciones));
+            }
         } else if (tipoDato == TipoDato.BOOLEANO) {
             String[] split = formato.split("/");
             if (split.length > 1) {
